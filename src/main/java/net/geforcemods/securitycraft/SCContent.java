@@ -38,6 +38,9 @@ import net.geforcemods.securitycraft.blocks.mines.FurnaceMineBlock;
 import net.geforcemods.securitycraft.blocks.mines.IMSBlock;
 import net.geforcemods.securitycraft.blocks.mines.MineBlock;
 import net.geforcemods.securitycraft.blocks.mines.TrackMineBlock;
+import net.geforcemods.securitycraft.blocks.pistons.ReinforcedPistonBlock;
+import net.geforcemods.securitycraft.blocks.pistons.SCMovingPistonBlock;
+import net.geforcemods.securitycraft.blocks.pistons.SCPistonHeadBlock;
 import net.geforcemods.securitycraft.blocks.reinforced.BaseReinforcedBlock;
 import net.geforcemods.securitycraft.blocks.reinforced.HorizontalReinforcedIronBars;
 import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedCarpetBlock;
@@ -108,6 +111,7 @@ import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
 import net.geforcemods.securitycraft.tileentity.ProtectoTileEntity;
 import net.geforcemods.securitycraft.tileentity.ReinforcedPressurePlateTileEntity;
 import net.geforcemods.securitycraft.tileentity.RetinalScannerTileEntity;
+import net.geforcemods.securitycraft.tileentity.SCPistonTileEntity;
 import net.geforcemods.securitycraft.tileentity.ScannerDoorTileEntity;
 import net.geforcemods.securitycraft.tileentity.SecretSignTileEntity;
 import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
@@ -470,6 +474,10 @@ public class SCContent
 	@Reinforced public static final RegistryObject<Block> REINFORCED_DARK_OAK_PRESSURE_PLATE = BLOCKS.register("reinforced_dark_oak_pressure_plate", () -> new ReinforcedPressurePlateBlock(Sensitivity.EVERYTHING, ReinforcedPressurePlateBlock.WOOD_PROPERTIES, Blocks.DARK_OAK_PRESSURE_PLATE));
 	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_REDSTONE_BLOCK = BLOCKS.register("reinforced_redstone_block", () -> new ReinforcedRedstoneBlock());
 	@OwnableTE public static final RegistryObject<Block> HORIZONTAL_REINFORCED_IRON_BARS = BLOCKS.register("horizontal_reinforced_iron_bars", () -> new HorizontalReinforcedIronBars(SoundType.METAL, Material.IRON, Blocks.IRON_BLOCK));
+	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_PISTON = BLOCKS.register("reinforced_piston", () -> new ReinforcedPistonBlock(false, Block.Properties.create(Material.PISTON).hardnessAndResistance(0.5F)));
+	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_STICKY_PISTON = BLOCKS.register("reinforced_sticky_piston", () -> new ReinforcedPistonBlock(true, Block.Properties.create(Material.PISTON).hardnessAndResistance(0.5F)));
+	public static final RegistryObject<Block> MOVING_PISTON = BLOCKS.register("moving_piston", () -> new SCMovingPistonBlock(Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F).variableOpacity().noDrops()));
+	public static final RegistryObject<Block> PISTON_HEAD = BLOCKS.register("piston_head", () -> new SCPistonHeadBlock(Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F).noDrops()));
 
 	//Fluids
 	public static final RegistryObject<FlowingFluid> FLOWING_FAKE_WATER = FLUIDS.register("flowing_fake_water", () -> new FakeWaterFluid.Flowing());
@@ -576,7 +584,8 @@ public class SCContent
 	public static TileEntityType<BlockPocketTileEntity> teTypeBlockPocket;
 	@ObjectHolder(SecurityCraft.MODID + ":reinforced_pressure_plate")
 	public static TileEntityType<ReinforcedPressurePlateTileEntity> teTypeReinforcedPressurePlate;
-
+	@ObjectHolder(SecurityCraft.MODID + ":moving_piston")
+	public static TileEntityType<SCPistonTileEntity> teTypeSCPiston;
 	//Entity types
 	@ObjectHolder(SecurityCraft.MODID + ":bouncingbetty")
 	public static EntityType<BouncingBettyEntity> eTypeBouncingBetty;
