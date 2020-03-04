@@ -474,10 +474,10 @@ public class SCContent
 	@Reinforced public static final RegistryObject<Block> REINFORCED_DARK_OAK_PRESSURE_PLATE = BLOCKS.register("reinforced_dark_oak_pressure_plate", () -> new ReinforcedPressurePlateBlock(Sensitivity.EVERYTHING, ReinforcedPressurePlateBlock.WOOD_PROPERTIES, Blocks.DARK_OAK_PRESSURE_PLATE));
 	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_REDSTONE_BLOCK = BLOCKS.register("reinforced_redstone_block", () -> new ReinforcedRedstoneBlock());
 	@OwnableTE public static final RegistryObject<Block> HORIZONTAL_REINFORCED_IRON_BARS = BLOCKS.register("horizontal_reinforced_iron_bars", () -> new HorizontalReinforcedIronBars(SoundType.METAL, Material.IRON, Blocks.IRON_BLOCK));
-	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_PISTON = BLOCKS.register("reinforced_piston", () -> new ReinforcedPistonBlock(false, Block.Properties.create(Material.PISTON).hardnessAndResistance(0.5F)));
-	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_STICKY_PISTON = BLOCKS.register("reinforced_sticky_piston", () -> new ReinforcedPistonBlock(true, Block.Properties.create(Material.PISTON).hardnessAndResistance(0.5F)));
-	public static final RegistryObject<Block> MOVING_PISTON = BLOCKS.register("moving_piston", () -> new SCMovingPistonBlock(Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F).variableOpacity().noDrops()));
-	public static final RegistryObject<Block> PISTON_HEAD = BLOCKS.register("piston_head", () -> new SCPistonHeadBlock(Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F).noDrops()));
+	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_PISTON = BLOCKS.register("reinforced_piston", () -> new ReinforcedPistonBlock(false, Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F, 6000000.0F)));
+	@OwnableTE @Reinforced public static final RegistryObject<Block> REINFORCED_STICKY_PISTON = BLOCKS.register("reinforced_sticky_piston", () -> new ReinforcedPistonBlock(true, Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F, 6000000.0F)));
+	public static final RegistryObject<Block> MOVING_PISTON = BLOCKS.register("moving_piston", () -> new SCMovingPistonBlock(Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F, 6000000.0F).variableOpacity().noDrops()));
+	public static final RegistryObject<Block> PISTON_HEAD = BLOCKS.register("piston_head", () -> new SCPistonHeadBlock(Block.Properties.create(Material.PISTON).hardnessAndResistance(-1.0F, 6000000.0F).noDrops()));
 
 	//Fluids
 	public static final RegistryObject<FlowingFluid> FLOWING_FAKE_WATER = FLUIDS.register("flowing_fake_water", () -> new FakeWaterFluid.Flowing());
