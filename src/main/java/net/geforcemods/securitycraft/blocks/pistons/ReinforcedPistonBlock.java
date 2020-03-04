@@ -284,7 +284,7 @@ public class ReinforcedPistonBlock extends DirectionalBlock implements IReinforc
 					return false;
 				}
 
-				if (blockStateIn.hasTileEntity())
+				if (blockStateIn.hasTileEntity() && block != SCContent.REINFORCED_PISTON.get() && block != SCContent.REINFORCED_STICKY_PISTON.get())
 					return (block instanceof BaseReinforcedBlock);
 				else
 					return true;
