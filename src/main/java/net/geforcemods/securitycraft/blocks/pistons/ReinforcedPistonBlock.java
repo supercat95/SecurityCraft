@@ -12,6 +12,7 @@ import net.geforcemods.securitycraft.blocks.reinforced.BaseReinforcedBlock;
 import net.geforcemods.securitycraft.blocks.reinforced.IReinforcedBlock;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.geforcemods.securitycraft.tileentity.SCPistonTileEntity;
+import net.geforcemods.securitycraft.util.BlockUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -162,7 +163,7 @@ public class ReinforcedPistonBlock extends DirectionalBlock implements IReinforc
 			}
 		}
 
-		if (worldIn.isSidePowered(pos, Direction.DOWN)) {
+		if (BlockUtils.hasActiveSCBlockNextTo(worldIn, pos) || worldIn.isSidePowered(pos, Direction.DOWN)) {
 			return true;
 		} else {
 			BlockPos blockpos = pos.up();
