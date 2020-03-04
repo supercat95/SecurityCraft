@@ -302,11 +302,11 @@ public class ReinforcedPistonBlock extends DirectionalBlock implements IReinforc
 			worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 20);
 		}
 
-		SCPistonBlockStructureHelper SCPistonBlockStructureHelper = new SCPistonBlockStructureHelper(worldIn, pos, directionIn, extending);
-		if (!SCPistonBlockStructureHelper.canMove()) {
+		SCPistonBlockStructureHelper structureHelper = new SCPistonBlockStructureHelper(worldIn, pos, directionIn, extending);
+		if (!structureHelper.canMove()) {
 			return false;
 		} else {
-			List<BlockPos> list = SCPistonBlockStructureHelper.getBlocksToMove();
+			List<BlockPos> list = structureHelper.getBlocksToMove();
 			List<BlockState> list1 = Lists.newArrayList();
 
 			for(int i = 0; i < list.size(); ++i) {
@@ -314,7 +314,7 @@ public class ReinforcedPistonBlock extends DirectionalBlock implements IReinforc
 				list1.add(worldIn.getBlockState(blockpos1));
 			}
 
-			List<BlockPos> list2 = SCPistonBlockStructureHelper.getBlocksToDestroy();
+			List<BlockPos> list2 = structureHelper.getBlocksToDestroy();
 			int k = list.size() + list2.size();
 			BlockState[] ablockstate = new BlockState[k];
 			Direction direction = extending ? directionIn : directionIn.getOpposite();
